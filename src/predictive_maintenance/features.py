@@ -4,7 +4,6 @@ import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-
 TARGET_COLUMN = "Machine failure"
 
 IDENTIFIER_COLUMNS = [
@@ -33,14 +32,18 @@ def create_features(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
         *LEAKAGE_COLUMNS,
     ]
 
-    features = data.drop(columns=columns_to_remove, errors="ignore")
+    features = data.drop(
+        columns=columns_to_remove,
+        errors="ignore",
+    )
+
     target = data[TARGET_COLUMN].astype(int).copy()
 
     return features, target
 
 
 def build_preprocessor(features: pd.DataFrame) -> ColumnTransformer:
-    """Create preprocessing steps for numerical and categorical features."""
+    """Create preprocessing for numerical and categorical features."""
 
     categorical_columns = features.select_dtypes(
         include=["object", "category"]
@@ -50,7 +53,7 @@ def build_preprocessor(features: pd.DataFrame) -> ColumnTransformer:
         include=["number"]
     ).columns.tolist()
 
-    preprocessor = ColumnTransformer(
+    return ColumnTransformer(
         transformers=[
             (
                 "numerical",
@@ -64,5 +67,3 @@ def build_preprocessor(features: pd.DataFrame) -> ColumnTransformer:
             ),
         ]
     )
-
-    return preprocessor

@@ -25,8 +25,9 @@ dev = [
     "ruff>=0.6",
 ]
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["predictive_maintenance"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
