@@ -2,7 +2,10 @@
 
 import pandas as pd
 from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import (
+    HistGradientBoostingClassifier,
+    RandomForestClassifier,
+)
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
@@ -69,6 +72,29 @@ def create_random_forest_model(features: pd.DataFrame) -> Pipeline:
                     class_weight="balanced_subsample",
                     random_state=42,
                     n_jobs=-1,
+                ),
+            ),
+        ]
+    )
+
+def create_gradient_boosting_model(
+    features: pd.DataFrame,
+) -> Pipeline:
+    """Create a class-weighted histogram gradient boosting model."""
+
+    return Pipeline(
+        steps=[
+            ("preprocessor", build_preprocessor(features)),
+            (
+                "classifier",
+                HistGradientBoostingClassifier(
+                    learning_rate=0.05,
+                    max_iter=200,
+                    max_leaf_nodes=15,
+                    min_samples_leaf=20,
+                    l2_regularization=1.0,
+                    class_weight="balanced",
+                    random_state=42,
                 ),
             ),
         ]
