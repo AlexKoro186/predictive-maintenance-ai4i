@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path.cwd().resolve()
 DEFAULT_DATA_PATH = PROJECT_ROOT / "data" / "raw" / "ai4i2020.csv"
 
 

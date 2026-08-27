@@ -20,7 +20,7 @@ from predictive_maintenance.train import (
     split_data,
 )
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path.cwd().resolve()
 MODEL_DIRECTORY = PROJECT_ROOT / "models"
 REPORT_DIRECTORY = PROJECT_ROOT / "reports"
 
