@@ -374,7 +374,6 @@ This project is available under the [MIT License](LICENSE).
 
 ## Author
 
-**Alexander Korolev**
-
- B.Sc. Student — Artificial Intelligence & Robotics
- Hochschule Furtwangen University (HFU)
+**Alexander Korolev**<br>
+B.Sc. Student — Artificial Intelligence & Robotics<br>
+Hochschule Furtwangen University (HFU)
