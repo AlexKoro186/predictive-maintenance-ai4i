@@ -9,7 +9,7 @@ description = "Machine failure prediction using the AI4I 2020 predictive mainten
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "joblib>=1.4",
+    "joblib>=1.4,<2.0",
     "jupyterlab>=4.0",
     "matplotlib>=3.8",
     "numpy>=1.26",
